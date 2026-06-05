@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sodium Charged - The Ultimate Minecraft Optimization Mod</title>
+    <meta name="description" content="Boost your Minecraft FPS effortlessly with Sodium Charged. The definitive memory optimization engine.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="background-wrapper">
+        <div class="background-glow"></div>
+        <div class="background-grid"></div>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="Sodium Charged Logo" class="nav-logo">
+                <span class="nav-title">Sodium Charged</span>
+            </div>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#stats">Benchmarks</a>
+                <a href="#" class="nav-cta" onclick="openModal(); return false;">Download Now</a>
+            </div>
+        </div>
+    </nav>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <div class="badge">🔥 Now available for Minecraft 1.21.11!</div>
+                <h1 class="hero-title">Unleash Your FPS.<br><span class="gradient-text">Zero Memory Leaks.</span></h1>
+                <p class="hero-subtitle">Sodium Charged rewrites the rendering pipeline and optimizes Java Garbage Collection. <b>Works perfectly alongside original Sodium or entirely standalone.</b></p>
+                <div class="hero-buttons">
+                    <button onclick="openModal()" class="btn btn-primary" id="mainDownloadBtn">
+                        <svg class="download-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                        Download Mod
+                    </button>
+                    <a href="#features" class="btn btn-secondary">Learn More</a>
+                </div>
+                <p class="hero-micro">✔️ Requires Fabric Loader • ✔️ PojavLauncher Supported</p>
+            </div>
+            
+            <div class="hero-image-container">
+                <div class="glass-panel stat-panel">
+                    <h3>Live Statistics</h3>
+                    <div class="stat-row">
+                        <span class="stat-label">Active Downloads:</span>
+                        <span class="stat-value highlight" id="downloadsCounter">14,285</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Avg. FPS Boost:</span>
+                        <span class="stat-value highlight green">+140%</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Memory Saved:</span>
+                        <span class="stat-value highlight blue">1.2 GB</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="features" class="features-section">
+            <h2 class="section-title reveal">Next-Generation <span class="gradient-text">Technology</span></h2>
+            <div class="features-grid">
+                <div class="feature-card glass-panel reveal">
+                    <div class="feature-icon">⚡</div>
+                    <h3>Chunk Memory Optimizer</h3>
+                    <p>Dramatically reduces RAM usage by compressing chunk geometry and optimizing internal buffers before sending them to the GPU.</p>
+                </div>
+                <div class="feature-card glass-panel reveal">
+                    <div class="feature-icon">🚀</div>
+                    <h3>PojavLauncher Optimization</h3>
+                    <p>Specially tuned for mobile players using PojavLauncher, preventing overheating and ensuring stable framerates on phones.</p>
+                </div>
+                <div class="feature-card glass-panel reveal">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Garbage Collection Fix</h3>
+                    <p>Prevents micro-stutters by aggressively managing Java object allocation, leading to perfectly smooth 1% low frame rates.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="download" class="download-section reveal">
+            <div class="glass-panel download-box">
+                <h2>Ready to Supercharge your game?</h2>
+                <p>Join thousands of players who have already upgraded their experience.</p>
+                <button onclick="openModal()" class="btn btn-primary pulse-btn">Download Sodium Charged</button>
+                <div class="terms">By downloading, you agree to our Terms of Service. Compatible with Windows, macOS, Linux, and Android (Pojav).</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Version Selection Modal -->
+    <div id="downloadModal" class="modal-overlay">
+        <div class="modal-content glass-panel">
+            <div class="modal-header">
+                <h2>Select Minecraft Version</h2>
+                <button class="close-btn" onclick="closeModal()">×</button>
+            </div>
+            <div class="modal-body">
+                <p>Choose your Minecraft version below to download the correct Fabric mod file.</p>
+                
+                <div class="version-list">
+                    <div class="version-item" onclick="selectVersion('1.21.11')">
+                        <div class="version-info">
+                            <span class="v-name">Minecraft 1.21.11</span>
+                            <span class="v-badge">Latest</span>
+                        </div>
+                        <span class="v-file">sodium-charged-1.3.8.jar</span>
+                    </div>
+                    
+                    <div class="version-item" onclick="selectVersion('1.21.10')">
+                        <div class="version-info">
+                            <span class="v-name">Minecraft 1.21.10</span>
+                        </div>
+                        <span class="v-file">sodium-charged-1.3.8.jar</span>
+                    </div>
+
+                    <div class="version-item" onclick="selectVersion('1.21.4')">
+                        <div class="version-info">
+                            <span class="v-name">Minecraft 1.21.4</span>
+                        </div>
+                        <span class="v-file">sodium-charged-1.3.8.jar</span>
+                    </div>
+                </div>
+
+                <div id="downloadAction" class="download-action hidden">
+                    <p>Selected: <strong id="selectedVerText"></strong></p>
+                    <a href="./sodium-charged-1.3.8.jar" download class="btn btn-primary full-width" onclick="triggerDownload()">
+                        Download <span id="selectedFileName"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <div class="footer-content">
+            <div class="logo-container">
+                <img src="logo.jpg" alt="Sodium Charged Logo" class="nav-logo small">
+                <span>Sodium Charged</span>
+            </div>
+            <p>© 2026 Sodium Charged Team. All rights reserved.</p>
+            <p class="disclaimer">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
