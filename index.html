@@ -3,152 +3,341 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sodium Charged - The Ultimate Minecraft Optimization Mod</title>
-    <meta name="description" content="Boost your Minecraft FPS effortlessly with Sodium Charged. The definitive memory optimization engine.">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;500;700;900&display=swap" rel="stylesheet">
+    <title>Sodium Charged ✨</title>
+    <meta name="description" content="A beautiful memory optimization engine for Minecraft.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
-<body>
-    <div class="background-wrapper">
-        <div class="background-glow"></div>
-        <div class="background-grid"></div>
+<body class="ethereal-theme has-custom-cursor">
+    
+    <!-- Cinematic Grain, Ambient Dust & Custom Cursor -->
+    <div class="global-grain"></div>
+    <canvas id="ambient-dust"></canvas>
+    <div class="custom-cursor"></div>
+
+    <!-- Dreamy Aurora Background -->
+    <div class="aurora-container">
+        <div class="aurora-orb orb-1"></div>
+        <div class="aurora-orb orb-2"></div>
+        <div class="aurora-orb orb-3"></div>
+        <div class="noise-overlay"></div>
     </div>
 
-    <nav class="navbar">
-        <div class="nav-content">
-            <div class="logo-container">
-                <img src="logo.jpg" alt="Sodium Charged Logo" class="nav-logo">
-                <span class="nav-title">Sodium Charged</span>
+    <nav class="glass-nav fade-in">
+        <div class="nav-container">
+            <div class="brand">
+                <img src="sodiumchargedlogo.png" alt="Sodium Charged" class="brand-logo">
+                <span class="brand-text">Sodium Charged</span>
             </div>
             <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#stats">Benchmarks</a>
-                <a href="#" class="nav-cta" onclick="openModal(); return false;">Download Now</a>
+                <a href="#features" class="soft-link">features</a>
+                <a href="#benchmarks" class="soft-link">benchmarks</a>
+                <button class="btn-glass-small" data-magnetic onclick="openModal()">download</button>
             </div>
         </div>
     </nav>
 
-    <main>
-        <section class="hero">
-            <div class="hero-content">
-                <div class="badge">🔥 Now available for Minecraft 1.21.11!</div>
-                <h1 class="hero-title">Unleash Your FPS.<br><span class="gradient-text">Zero Memory Leaks.</span></h1>
-                <p class="hero-subtitle">Sodium Charged rewrites the rendering pipeline and optimizes Java Garbage Collection. <b>Works perfectly alongside original Sodium or entirely standalone.</b></p>
-                <div class="hero-buttons">
-                    <button onclick="openModal()" class="btn btn-primary" id="mainDownloadBtn">
-                        <svg class="download-icon" viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
-                        Download Mod
-                    </button>
-                    <a href="#features" class="btn btn-secondary">Learn More</a>
+    <main class="main-content">
+        <!-- 1. HERO -->
+        <section class="hero-section hero-clean fade-up">
+            <div class="hero-wrapper">
+                <div class="brand-inline">
+                    <img src="sodiumchargedlogo.png" alt="Sodium Charged Logo" class="brand-logo-large">
+                    <h2>Sodium Charged</h2>
                 </div>
-                <p class="hero-micro">✔️ Requires Fabric Loader • ✔️ PojavLauncher Supported</p>
+                
+                <h1 class="hero-title editorial-font">
+                    Maximum FPS.<br>
+                    <span class="italic">Minimum RAM.</span>
+                </h1>
+                
+                <p class="hero-desc">
+                    The definitive Minecraft optimization mod. Zero memory leaks, eliminated micro-stutters, and uncompromised framerates.
+                </p>
+                
+                <div class="hero-download-cluster">
+                    <button class="btn-glass-large shimmer-btn" onclick="openModal()">
+                        Download Now - v1.3.8
+                    </button>
+                    <div class="version-tags">
+                        <span class="pill-badge">Minecraft 1.21 - 1.21.11</span>
+                        <span class="pill-badge">Fabric Support</span>
+                    </div>
+                </div>
+                
+                <div class="hero-benchmark-preview glass-card tilt-card fade-up delay-1">
+                    <div class="fps-row">
+                        <span>Vanilla</span>
+                        <div class="fps-val"><span class="fps-counter" data-target="82">0</span> FPS</div>
+                    </div>
+                    <div class="fps-row">
+                        <span>Sodium</span>
+                        <div class="fps-val"><span class="fps-counter" data-target="156">0</span> FPS</div>
+                    </div>
+                    <div class="fps-row active">
+                        <span class="text-primary">Sodium Charged</span>
+                        <div class="fps-val text-primary"><span class="fps-counter" data-target="197">0</span> FPS</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. PERFORMANCE SHOWCASE -->
+        <section id="performance" class="performance-section">
+            <div class="section-header">
+                <h2 class="section-title editorial-font">
+                    <span class="mask-wrap"><span class="mask-reveal">Before vs After.</span></span>
+                </h2>
+                <p class="section-subtitle fade-up delay-1">See the difference immediately.</p>
+            </div>
+            <div class="bento-grid" id="performance-grid">
+                <div class="solid-card tracking-card fade-up tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <h3>Vanilla Client</h3>
+                        <div class="metric">
+                            <span class="metric-val">1.8</span>
+                            <span class="metric-unit">GB</span>
+                        </div>
+                        <p>High memory usage and frequent 1% low drops.</p>
+                    </div>
+                </div>
+                <div class="gradient-card tracking-card fade-up delay-1 tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <h3>Sodium Charged</h3>
+                        <div class="metric">
+                            <span class="metric-val text-primary">0.6</span>
+                            <span class="metric-unit text-primary">GB</span>
+                        </div>
+                        <p>Optimized memory footprint with perfectly smooth frametimes.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. FEATURES -->
+        <section id="features" class="features-section">
+            <div class="section-header">
+                <h2 class="section-title editorial-font">
+                    <span class="mask-wrap"><span class="mask-reveal">Features.</span></span>
+                </h2>
+                <p class="section-subtitle fade-up delay-1">Everything you need for peak performance.</p>
             </div>
             
-            <div class="hero-image-container">
-                <div class="glass-panel stat-panel">
-                    <h3>Live Statistics</h3>
-                    <div class="stat-row">
-                        <span class="stat-label">Active Downloads:</span>
-                        <span class="stat-value highlight" id="downloadsCounter">14,285</span>
+            <div class="bento-grid" id="features-grid">
+                <div class="glass-card tracking-card fade-up tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <h3>Memory Optimization</h3>
+                        <p>Compresses chunk data before rendering to significantly reduce RAM allocation requirements.</p>
                     </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Avg. FPS Boost:</span>
-                        <span class="stat-value highlight green">+140%</span>
+                </div>
+                
+                <div class="solid-card tracking-card fade-up delay-1 tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <h3>Chunk Loading</h3>
+                        <p>Instantaneous multi-threaded chunk loading pipeline for stutter-free world generation.</p>
                     </div>
-                    <div class="stat-row">
-                        <span class="stat-label">Memory Saved:</span>
-                        <span class="stat-value highlight blue">1.2 GB</span>
+                </div>
+                
+                <div class="gradient-card tracking-card fade-up delay-2 tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <h3>Reduced Stutters</h3>
+                        <p>Custom memory allocator prevents standard Java Garbage Collection spikes.</p>
+                    </div>
+                </div>
+
+                <div class="glass-card tracking-card fade-up delay-3 tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <h3>Mobile/Pojav Support</h3>
+                        <p>Hardcoded limits and specific hooks to prevent thermal throttling on mobile environments.</p>
                     </div>
                 </div>
             </div>
         </section>
 
-        <section id="features" class="features-section">
-            <h2 class="section-title reveal">Next-Generation <span class="gradient-text">Technology</span></h2>
-            <div class="features-grid">
-                <div class="feature-card glass-panel reveal">
-                    <div class="feature-icon">⚡</div>
-                    <h3>Chunk Memory Optimizer</h3>
-                    <p>Dramatically reduces RAM usage by compressing chunk geometry and optimizing internal buffers before sending them to the GPU.</p>
-                </div>
-                <div class="feature-card glass-panel reveal">
-                    <div class="feature-icon">🚀</div>
-                    <h3>PojavLauncher Optimization</h3>
-                    <p>Specially tuned for mobile players using PojavLauncher, preventing overheating and ensuring stable framerates on phones.</p>
-                </div>
-                <div class="feature-card glass-panel reveal">
-                    <div class="feature-icon">🛡️</div>
-                    <h3>Garbage Collection Fix</h3>
-                    <p>Prevents micro-stutters by aggressively managing Java object allocation, leading to perfectly smooth 1% low frame rates.</p>
+        <!-- 4. BENCHMARKS -->
+        <section id="benchmarks" class="chart-section">
+            <div class="section-header">
+                <h2 class="section-title editorial-font">
+                    <span class="mask-wrap"><span class="mask-reveal">Performance Data.</span></span>
+                </h2>
+            </div>
+            
+            <div class="bento-grid" id="benchmark-dashboard">
+                <div class="solid-card tracking-card fade-up large-card dashboard-card tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <h3>FPS Output</h3>
+                        <div class="bar-chart-container">
+                            <div class="bar-row">
+                                <span class="bar-label">Vanilla</span>
+                                <div class="bar-track"><div class="bar-fill vanilla bar-anim" data-width="41%"></div></div>
+                                <span class="bar-value">82 FPS</span>
+                            </div>
+                            <div class="bar-row">
+                                <span class="bar-label">Optifine</span>
+                                <div class="bar-track"><div class="bar-fill optifine bar-anim" data-width="56%"></div></div>
+                                <span class="bar-value">112 FPS</span>
+                            </div>
+                            <div class="bar-row">
+                                <span class="bar-label">Sodium</span>
+                                <div class="bar-track"><div class="bar-fill sodium bar-anim" data-width="79%"></div></div>
+                                <span class="bar-value">156 FPS</span>
+                            </div>
+                            <div class="bar-row active-row">
+                                <span class="bar-label text-primary">Sodium Charged</span>
+                                <div class="bar-track"><div class="bar-fill charged bar-anim" data-width="100%"></div></div>
+                                <span class="bar-value text-primary">197 FPS</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <section id="download" class="download-section reveal">
-            <div class="glass-panel download-box">
-                <h2>Ready to Supercharge your game?</h2>
-                <p>Join thousands of players who have already upgraded their experience.</p>
-                <button onclick="openModal()" class="btn btn-primary pulse-btn">Download Sodium Charged</button>
-                <div class="terms">By downloading, you agree to our Terms of Service. Compatible with Windows, macOS, Linux, and Android (Pojav).</div>
+        <!-- 5. COMMUNITY / TESTIMONIALS -->
+        <section id="testimonials" class="testimonials-section">
+            <div class="section-header">
+                <h2 class="section-title editorial-font">
+                    <span class="mask-wrap"><span class="mask-reveal">Player Reviews.</span></span>
+                </h2>
+            </div>
+            <div class="bento-grid" id="testimonials-grid">
+                <div class="glass-card tracking-card fade-up review-card tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="stars">★★★★★</div>
+                        <p class="editorial-font">"My 1% lows have completely leveled out. It feels like a different game."</p>
+                        <span class="author">- Max_HT3_</span>
+                    </div>
+                </div>
+                <div class="solid-card tracking-card fade-up delay-1 review-card tilt-card">
+                    <div class="card-glow"></div>
+                    <div class="card-content">
+                        <div class="stars">★★★★☆</div>
+                        <p class="editorial-font">"The Pojav tuning actually works. My phone stays perfectly cool now."</p>
+                        <span class="author">- HT1_Gooner</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. DOWNLOAD CTA -->
+        <section class="cta-section fade-up">
+            <div class="glass-card cta-banner tracking-card tilt-card" style="text-align: center; padding: 60px;">
+                <div class="card-glow"></div>
+                <div class="card-content">
+                    <h2 class="editorial-font" style="font-size: 3rem; margin-bottom: 30px;">Get Sodium Charged</h2>
+                    <div class="download-specs" style="justify-content: center; gap: 40px; margin-bottom: 40px; border-bottom: none;">
+                        <div class="spec-col">
+                            <span class="spec-label">Latest Version</span>
+                            <span class="spec-val">v1.3.8</span>
+                        </div>
+                        <div class="spec-col">
+                            <span class="spec-label">Supported Versions</span>
+                            <span class="spec-val">1.21 - 1.21.11</span>
+                        </div>
+                        <div class="spec-col">
+                            <span class="spec-label">Loader</span>
+                            <span class="spec-val">Fabric</span>
+                        </div>
+                        <div class="spec-col">
+                            <span class="spec-label">File Size</span>
+                            <span class="spec-val">2.4 MB</span>
+                        </div>
+                    </div>
+                    <button class="btn-glass-large shimmer-btn" onclick="openModal()">Download Now</button>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Version Selection Modal -->
+    <!-- Dreamy Modal -->
     <div id="downloadModal" class="modal-overlay">
-        <div class="modal-content glass-panel">
+        <div class="modal-box glass-card">
             <div class="modal-header">
-                <h2>Select Minecraft Version</h2>
-                <button class="close-btn" onclick="closeModal()">×</button>
+                <h3>Select your version</h3>
+                <button class="close-btn" onclick="closeModal()">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+                </button>
             </div>
+            
             <div class="modal-body">
-                <p>Choose your Minecraft version below to download the correct Fabric mod file.</p>
-                
-                <div class="version-list">
-                    <div class="version-item" onclick="selectVersion('1.21.11')">
-                        <div class="version-info">
-                            <span class="v-name">Minecraft 1.21.11</span>
-                            <span class="v-badge">Latest</span>
+                <div class="selectors-grid">
+                    <div class="input-group">
+                        <label>Game Version</label>
+                        <div class="custom-dropdown" id="gameVersionDropdown">
+                            <div class="dropdown-selected" onclick="toggleDropdown('gameVersionDropdown')">
+                                <span class="selected-text">Choose version...</span>
+                                <div class="dropdown-arrow"></div>
+                            </div>
+                            <div class="dropdown-options">
+                                <div class="dropdown-option" onclick="selectOption('gameVersionDropdown', '1.21.11')">1.21.11 (Latest)</div>
+                                <div class="dropdown-option" onclick="selectOption('gameVersionDropdown', '1.21.10')">1.21.10</div>
+                                <div class="dropdown-option" onclick="selectOption('gameVersionDropdown', '1.21.4')">1.21.4</div>
+                                <div class="dropdown-option" onclick="selectOption('gameVersionDropdown', '1.21.3')">1.21.3</div>
+                                <div class="dropdown-option" onclick="selectOption('gameVersionDropdown', '1.21.2')">1.21.2</div>
+                                <div class="dropdown-option" onclick="selectOption('gameVersionDropdown', '1.21.1')">1.21.1</div>
+                                <div class="dropdown-option" onclick="selectOption('gameVersionDropdown', '1.21')">1.21</div>
+                            </div>
+                            <input type="hidden" id="gameVersionSelect" value="">
                         </div>
-                        <span class="v-file">sodium-charged-1.3.8.jar</span>
                     </div>
-                    
-                    <div class="version-item" onclick="selectVersion('1.21.10')">
-                        <div class="version-info">
-                            <span class="v-name">Minecraft 1.21.10</span>
+                    <div class="input-group">
+                        <label>Mod Loader</label>
+                        <div class="custom-dropdown" id="loaderDropdown">
+                            <div class="dropdown-selected" onclick="toggleDropdown('loaderDropdown')">
+                                <span class="selected-text">Choose loader...</span>
+                                <div class="dropdown-arrow"></div>
+                            </div>
+                            <div class="dropdown-options">
+                                <div class="dropdown-option" onclick="selectOption('loaderDropdown', 'Fabric')">Fabric</div>
+                            </div>
+                            <input type="hidden" id="loaderSelect" value="">
                         </div>
-                        <span class="v-file">sodium-charged-1.3.8.jar</span>
-                    </div>
-
-                    <div class="version-item" onclick="selectVersion('1.21.4')">
-                        <div class="version-info">
-                            <span class="v-name">Minecraft 1.21.4</span>
-                        </div>
-                        <span class="v-file">sodium-charged-1.3.8.jar</span>
                     </div>
                 </div>
 
                 <div id="downloadAction" class="download-action hidden">
-                    <p>Selected: <strong id="selectedVerText"></strong></p>
-                    <a href="./sodium-charged-1.3.8.jar" download class="btn btn-primary full-width" onclick="triggerDownload()">
-                        Download <span id="selectedFileName"></span>
+                    <div class="file-card">
+                        <div class="file-icon-soft">
+                            <img src="sodiumchargedlogo.png" alt="Sodium Charged" class="file-logo">
+                        </div>
+                        <div class="file-info">
+                            <span class="file-name" id="selectedFileName">sodium-charged-1.3.8.jar</span>
+                            <span class="file-tags">
+                                <span class="soft-tag" id="compatRange">1.21 - 1.21.11</span>
+                                <span class="soft-tag tag-primary">Fabric</span>
+                            </span>
+                        </div>
+                    </div>
+                    <a href="./sodium-charged-1.3.8.jar" download class="btn-glass-large w-full" onclick="triggerDownload()">
+                        Download File
                     </a>
                 </div>
             </div>
         </div>
     </div>
 
-    <footer>
+    <footer class="footer">
         <div class="footer-content">
-            <div class="logo-container">
-                <img src="logo.jpg" alt="Sodium Charged Logo" class="nav-logo small">
+            <div class="footer-brand">
+                <img src="sodiumchargedlogo.png" alt="Logo" class="footer-logo">
                 <span>Sodium Charged</span>
             </div>
-            <p>© 2026 Sodium Charged Team. All rights reserved.</p>
+            <p class="copyright">© 2026 Sodium Charged. Crafted with care.</p>
             <p class="disclaimer">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</p>
         </div>
     </footer>
 
+    <script src="https://unpkg.com/lenis@1.1.2/dist/lenis.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
